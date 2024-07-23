@@ -11,6 +11,7 @@ const CourseContent = (props) => {
   )
 };
 
+const Content = (props)
 
 const TotalContent = (props) => {
   return (
