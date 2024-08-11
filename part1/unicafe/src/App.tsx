@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const course = "Half Stack application development";
+  const part1 = "Fundamentals of React";
+  const exercises1 = 10;
+  const part2 = "Using props to pass data";
+  const exercises2 = 7;
+  const part3 = "State of a component";
+  const exercises3 = 14;
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <Header course={course} />
+      <Content
+        part1={part1}
+        part2={part2}
+        part3={part3}
+        exercise1={exercises1}
+        exercise2={exercises2}
+        exercise3={exercises3}
+      />
+      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+    </div>
+  );
+};
+
+export default App;
+
+// Typescript typing for props.
+interface AppProps {
+  course?: string;
+  part1?: string;
+  part2?: string;
+  part3?: string;
+  exercise1?: number;
+  exercise2?: number;
+  exercise3?: number;
 }
 
-export default App
+const Header = (props: AppProps) => {
+  return <h1>{props.course}</h1>;
+};
+
+const Content = (props: AppProps) => {
+  return (
+    <>
+      <p>
+        {props.part1} {props.exercises1}
+      </p>
+      <p>
+        {props.part2} {props.exercises2}
+      </p>
+      <p>
+        {props.part3} {props.exercises3}
+      </p>
+    </>
+  );
+};
